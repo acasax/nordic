@@ -380,6 +380,10 @@ h3 {
     padding-bottom: 120px;
 }
 
+.icon img {
+    max-width: 64px !important;
+}
+
 
 /* line 217, ../../Arafath/CL/December/233. Startup/HTML/scss/theme-default.scss */
 
@@ -832,7 +836,7 @@ h3 {
 .section_title span {
     position: relative;
     z-index: 3;
-    font-size: 20px;
+    font-size: 25px;
     font-weight: 500;
     color: #615CFD;
     text-transform: capitalize;
@@ -1062,7 +1066,7 @@ h3 {
     top: 5px;
     padding: 5px;
     right: 0;
-    margin-top: -5px;
+    margin-top: -17px;
     top: -29px;
     right: 5px;
 }
@@ -2503,7 +2507,7 @@ h3 {
 @media (max-width: 767px) {
     /* line 71, ../../Arafath/CL/December/233. Startup/HTML/scss/_footer.scss */
     .footer .socail_links {
-        text-align: left;
+        text-align: center;
         margin-top: 30px;
     }
 }
