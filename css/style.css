@@ -4610,6 +4610,10 @@ h3 {
     font-size: 14px;
 }
 
+.error {
+    font-size: 14px;
+    color: red;
+}
 
 /* line 57, ../../Arafath/CL/December/233. Startup/HTML/scss/_contact.scss */
 

@@ -91,32 +91,31 @@
                     <h2 class="contact-title">Get in Touch</h2>
                 </div>
                 <div class="col-lg-8">
-                    <form class="form-contact contact_form" id="contactForm" novalidate="novalidate" action="mail.php" method="post">
+                    <form class="form-contact contact_form" id="contactForm" action="mail.php" method="post" enctype="multipart/form-data" >
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Message'" placeholder='Enter Message'></textarea>
+                                    <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" onblur="$(this).valid()" placeholder='Enter Message'></textarea>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <input class="form-control" name="name" id="name" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter your name'" placeholder='Enter your name'>
+                                    <input class="form-control" name="name" id="name" type="text" onblur="$(this).valid()" placeholder='Enter your name'>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
-                                    <input class="form-control" name="email" id="email" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'" placeholder='Enter email address'>
+                                    <input class="form-control" name="email" id="email" type="email" onblur="$(this).valid()" placeholder='Enter email address'>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <input class="form-control" name="subject" id="subject" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Subject'" placeholder='Enter Subject'>
+                                    <input class="form-control" name="subject" id="subject" type="text" onblur="$(this).valid()" placeholder='Enter Subject'>
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
                         <div class="form-group mt-3">
-                            <button type="submit" class="button button-contactForm btn_4 boxed-btn" value="Send">Send Message</button>
+                            <button type="submit" name="action" id="action" class="button button-contactForm btn_4 boxed-btn" value="Send">Send Message</button>
                         </div>
                     </form>
                 </div>
@@ -148,21 +147,6 @@
     </section>
     <!-- ================ contact section end ================= -->
 
-    <div class="modal" id="myModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <!-- Modal body -->
-                <div class="modal-body">
-                </div>
-
-                <!-- Modal footer -->
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">U redu</button>
-                </div>
-
-            </div>
-        </div>
-    </div>
 
 
     <!-- footer start -->
@@ -249,7 +233,12 @@
     <script src="js/gijgo.min.js"></script>
 
     <!--contact js-->
-    <script src="js/contact.js"></script>
+    <script type="text/javascript" src="js/contact.js"></script>
+    <script type="text/javascript" language="javascript" src="vendor/swall/sweetalert.js" ></script>
+
+    <script src="vendor/form-validation/jquery.form.js"></script>
+    <script src="vendor/form-validation/jquery.validate.min.js"></script>
+
     <script src="js/jquery.ajaxchimp.min.js"></script>
     <script src="js/jquery.form.js"></script>
     <script src="js/jquery.validate.min.js"></script>
