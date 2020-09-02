@@ -35,7 +35,6 @@ $(document).ready(function () {
                         let objResp = JSON.parse(data);
                         let str = objResp.type;
 
-
                         if (str === 'ERROR') {
                             str = objResp.data;
                             swal({

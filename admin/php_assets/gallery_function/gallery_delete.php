@@ -3,13 +3,13 @@ include "../../connection.php";
 include "functions.php";
 require_once '../class/class.user.php';
 $user_class = new USER();
-if (isset($_POST["id"])) {
+if (isset($_POST["gallery_id"])) {
     $stmt = $db->prepare(
         "DELETE FROM gallery WHERE id = :id"
     );
     $result = $stmt->execute(
         array(
-            ':id' => $_POST["id"]
+            ':id' => $_POST["gallery_id"]
         )
     );
 

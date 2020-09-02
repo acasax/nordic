@@ -52,14 +52,14 @@
             <div class="modal-body">
                 <form method="post" id="gallery_form" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label class="control-label">Insert picture</label>
-                        <input type="text" name="txt_picture" onblur="$(this).valid()" id="txt_picture" class="form-control" placeholder="" required autofocus>
+                        <label class="control-label">Insert title</label>
+                        <input type="text" name="txt_title" onblur="$(this).valid()" id="txt_title" class="form-control" placeholder="" required autofocus>
                     </div>
                     <div class="form-group">
-                        <label class="control-label">Insert title</label>
-                        <input type="text" name="txt_title" onblur="$(this).valid()" id="txt_title" class="form-control" placeholder="" required>
+                        <label class="control-label">Insert picture</label>
+                        <input type="file" accept="image/*" name="image" onblur="$(this).valid()" class="form-control" placeholder="" required >
+                        <div id="preview"><img src="" /></div><br>
                     </div>
-
             </div>
             <div class="modal-footer">
                 <input type="hidden" name="id" id="id" />
@@ -68,11 +68,13 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"  id="dismiss-modal">Leave</button>
             </div>
             </form>
+            <div id="err"></div>
         </div>
     </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     <script type="text/javascript" language="javascript" src="assets/js/gallery.js" ></script>
     <script type="text/javascript" language="javascript" src="../vendor/swall/sweetalert.js" ></script>
 

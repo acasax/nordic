@@ -57,12 +57,28 @@ $(document).ready(function() {
                 $.ajax({
                     url: "php_assets/gallery_function/gallery_func.php",
                     method: 'POST',
+                    dataType: 'json',
                     data: new FormData(form),
-                    contentType: false,
                     processData: false,
+                    contentType: false,
+                    cache: false,
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    crossDomain: true,
                     success: function(data) {
                         let objResp = JSON.parse(data);
                         let str = objResp.type;
+                        $("#preview").html(data);
+                        if (str === "invalid"){
+                            $("#err").html("Invalid File !").fadeIn();
+                        }
+                        if (str === "valid"){
+                            $("#preview").html(data).fadeIn();
+                            $("#gallery_form")[0].reset();
+                        }
+
+
                         if (str === 'ERROR') {
                             str = objResp.data;
                             swal({
@@ -86,11 +102,13 @@ $(document).ready(function() {
                                 showConfirmButton: false,
                                 type: "success"
                             });
-                            $('#firm_form')[0].reset();
+                            $('#gallery_form_form')[0].reset();
                             $('#exampleModalCenter').modal('hide');
                             dataTable.ajax.reload();
                         }
 
+                    }, error: function (e) {
+                        $("#err").html(e).fadeIn();
                     }
                 })
             }
@@ -143,7 +161,7 @@ $(document).ready(function() {
 
 
     $(document).on('click', '.delete', function() {
-        let firm_id = $(this).attr("id");
+        let gallery_id = $(this).attr("id");
         swal({
             title: "Da li ste sigurni da želite izbriste ovu firmu?",
             type: "warning",
@@ -153,14 +171,15 @@ $(document).ready(function() {
             cancelButtonText: "Ne",
             closeOnConfirm: false
         }, function(isConfirm) {
-            if (!isConfirm) return;
+            if (!isConfirm);
             $.ajax({
                 url: "php_assets/gallery_function/gallery_delete.php",
                 method: "POST",
-                data: { firm_id: firm_id },
+                data: { gallery_id: gallery_id },
                 success: function(data) {
+                    let objResp = JSON.parse(data);
+                    let str = objResp.type;
                     if (str === 'OK') {
-                        str = objResp.data;
                         swal({
                             title: "Uspešno",
                             text: str,
