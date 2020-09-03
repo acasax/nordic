@@ -18,7 +18,7 @@ if(isset($_POST['login_button'])){
         $row = $select_stm->fetch(PDO::FETCH_ASSOC);
         $num_of_company = $select_stm->rowCount();
         if ($num_of_company > 0) { //Provera da li je iz baze učitan podatak
-            if($email==$row["email"]){ //Provera sa kojim podacima iz baze se poklapa
+            if($email == $row["email"]){ //Provera sa kojim podacima iz baze se poklapa
                 if(md5($password) == $row["password"]){ //Provera šifre
                     $_SESSION["user_login"] = $row["acc_id"]; // Sesiji se dodeljuje id korisnika
                     $user_class->returnJSON("OK",'Uspešno ste se prijavili');

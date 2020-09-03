@@ -45,11 +45,18 @@ $(document).ready(function() {
             rules: {
                 txt_title: {
                     required: true,
+                },
+                image: {
+                    required: true
                 }
+
             },
             messages: {
                 txt_title: {
                     required: 'Unesite naslov',
+                },
+                image: {
+                    required: "Izaberi fajl"
                 }
             },
             submitHandler: function submitHandler(form) {
@@ -57,7 +64,6 @@ $(document).ready(function() {
                 $.ajax({
                     url: "php_assets/gallery_function/gallery_func.php",
                     method: 'POST',
-                    dataType: 'json',
                     data: new FormData(form),
                     processData: false,
                     contentType: false,
@@ -69,7 +75,6 @@ $(document).ready(function() {
                     success: function(data) {
                         let objResp = JSON.parse(data);
                         let str = objResp.type;
-                        $("#preview").html(data);
                         if (str === "invalid"){
                             $("#err").html("Invalid File !").fadeIn();
                         }
@@ -77,7 +82,6 @@ $(document).ready(function() {
                             $("#preview").html(data).fadeIn();
                             $("#gallery_form")[0].reset();
                         }
-
 
                         if (str === 'ERROR') {
                             str = objResp.data;
@@ -102,7 +106,7 @@ $(document).ready(function() {
                                 showConfirmButton: false,
                                 type: "success"
                             });
-                            $('#gallery_form_form')[0].reset();
+                            $('#gallery_form')[0].reset();
                             $('#exampleModalCenter').modal('hide');
                             dataTable.ajax.reload();
                         }
@@ -135,23 +139,17 @@ $(document).ready(function() {
 
 
     $(document).on('click', '.update', function() {
-        let firm_id = $(this).attr("id");
+        let gallery_id = $(this).attr("id");
         $.ajax({
-            url: "php_function/firm/firm_fetch_single.php",
+            url: "php_assets/gallery_function/gallery_fetch_single.php",
             method: "POST",
-            data: { firm_id: firm_id },
+            data: { gallery_id: gallery_id },
             dataType: "json",
             success: function(data) {
                 $('#exampleModalCenter').modal('show');
-                $('#txt_name').val(data.name);
-                $('#txt_adresa').val(data.adresa);
-                $('#txt_city').val(data.city);
-                $('#txt_mpb').val(data.mpb);
-                $('#txt_pib').val(data.pib);
-                $('#txt_ceo').val(data.ceo);
-                $('#txt_brlk').val(data.lk);
-                $('.modal-title').text("Izmeni firmu");
-                $('#firm_id').val(firm_id);
+                $('#txt_title').val(data.title);
+                $('.modal-title').text("Izmeni");
+                $('#gallery_id').val(gallery_id);
                 $('#action').val("Promeni");
                 $('#operation').val("Promeni");
             }
@@ -171,7 +169,7 @@ $(document).ready(function() {
             cancelButtonText: "Ne",
             closeOnConfirm: false
         }, function(isConfirm) {
-            if (!isConfirm);
+            if (!isConfirm) return;
             $.ajax({
                 url: "php_assets/gallery_function/gallery_delete.php",
                 method: "POST",

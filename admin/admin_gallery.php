@@ -57,7 +57,7 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label">Insert picture</label>
-                        <input type="file" accept="image/*" name="image" onblur="$(this).valid()" class="form-control" placeholder="" required >
+                        <input type="file" accept="image/*" name="image" onchange="" onblur="$(this).valid()"  id="image" class="form-control" placeholder="" >
                         <div id="preview"><img src="" /></div><br>
                     </div>
             </div>
@@ -73,7 +73,7 @@
     </div>
 
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 
     <script type="text/javascript" language="javascript" src="assets/js/gallery.js" ></script>
     <script type="text/javascript" language="javascript" src="../vendor/swall/sweetalert.js" ></script>
@@ -83,6 +83,7 @@
     <!-- Font Awesome -->
     <script src="https://kit.fontawesome.com/77c0d793ed.js" crossorigin="anonymous"></script>
     <!--Bootstrap Scripts-->
+    <script src="https://kit.fontawesome.com/77c0d793ed.js" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

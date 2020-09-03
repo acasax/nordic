@@ -2,15 +2,16 @@
 include "../../connection.php";
 include "functions.php";
 
-if(isset($_POST["id"])){
+if(isset($_POST["gallery_id"])){
     $output = array();
     $stmt = $db->prepare("
         SELECT * FROM gallery
-        WHERE id = '".$_POST["id"]."'"
+        WHERE id = '".$_POST["gallery_id"]."'"
     );
     $stmt->execute();
     $result = $stmt->fetch();
-    $output["name"] = $result["title"];
+    $output["title"] = $result["title"];
+    $output["name"] = $result["name"];
 
     echo json_encode($output);
 }

@@ -38,8 +38,8 @@ foreach($result as $row){
     $sub_array[] = $row["id"];
     $sub_array[] = $row["title"];
     $sub_array[] =  '<img src="' .$img. '" class="custom_img">';
-    $sub_array[] = '<button type="button" name="update" id="'.$row["id"].'" class="w-100 h-100 update" style="background: none; border: none; margin: auto; text-align: center;" title="Izmeni"><i class="fas fa-user-edit"></i></button>';
-    $sub_array[] = '<button type="button" name="delete" id="'.$row["id"].'" class="w-100 h-100 delete" style="background: none; border: none; margin: auto; text-align: center;" title="Obriši"><i class="fas fa-trash"></i></button>';
+    $sub_array[] = '<button type="button" name="update" id="'.$row["id"].'" class="w-100 h-100 update" style="background: none; border: none; margin: auto; text-align: center;" title="Izmeni" ><i class="fas fa-user-edit"></i></button>';
+    $sub_array[] = '<button type="button" name="delete" id="'.$row["id"].'" class="w-100 h-100 delete" style="background: none; border: none; margin: auto; text-align: center;" title="Obriši" ><i class="fas fa-trash"></i></button>';
 
     $data[] = $sub_array;
 }
