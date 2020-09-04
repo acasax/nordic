@@ -16,7 +16,7 @@ $(document).ready(function () {
             messages: {
                 reg_email: {
                     required: "Insert email",
-                    email: "E adresa koju se uneli nije validna."
+                    email: "E-mail is not valid."
                 },
                 reg_password: {
                     required: "Insert password"
@@ -38,7 +38,7 @@ $(document).ready(function () {
                         if (str === 'ERROR') {
                             str = objResp.data;
                             swal({
-                                title: "Greška",
+                                title: "Error",
                                 text: str,
                                 timer: 3000,
                                 showCancelButton: false,
@@ -51,7 +51,7 @@ $(document).ready(function () {
                         if (str === 'OK') {
                             str = objResp.data;
                             swal({
-                                title: "Uspešno",
+                                title: "Success",
                                 text: str,
                                 showCancelButton: false,
                                 showConfirmButton: true,

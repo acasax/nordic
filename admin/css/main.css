@@ -22,8 +22,13 @@ h3 {
     width: 300px;
 }
 .custom_img {
-    max-width: 100px;
+    height: 80px;
 }
+
+#preview {
+    text-align: center;
+}
+
 .form-signin {
     width: 100%;
     max-width: 330px;

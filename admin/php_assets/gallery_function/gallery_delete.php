@@ -14,7 +14,7 @@ if (isset($_POST["gallery_id"])) {
     );
 
     if (!empty($result)) {
-        $user_class->returnJSON("OK", 'Uspešno ste obrisali.');
+        $user_class->returnJSON("OK", 'Successfully deleted image.');
         return;
     }
 }

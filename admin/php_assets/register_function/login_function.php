@@ -21,7 +21,7 @@ if(isset($_POST['login_button'])){
             if($email == $row["email"]){ //Provera sa kojim podacima iz baze se poklapa
                 if(md5($password) == $row["password"]){ //Provera šifre
                     $_SESSION["user_login"] = $row["acc_id"]; // Sesiji se dodeljuje id korisnika
-                    $user_class->returnJSON("OK",'Uspešno ste se prijavili');
+                    $user_class->returnJSON("OK",'You have successfully logged in');
                     return;
                 } else{
                     $user_class->returnJSON('ERROR', "Wrong password");

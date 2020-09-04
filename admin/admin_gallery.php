@@ -55,10 +55,9 @@
                         <label class="control-label">Insert title</label>
                         <input type="text" name="txt_title" onblur="$(this).valid()" id="txt_title" class="form-control" placeholder="" required autofocus>
                     </div>
-                    <div class="form-group">
-                        <label class="control-label">Insert picture</label>
-                        <input type="file" accept="image/*" name="image" onchange="" onblur="$(this).valid()"  id="image" class="form-control" placeholder="" >
-                        <div id="preview"><img src="" /></div><br>
+                    <div class="custom-file">
+                        <input type="file" accept="image/*" name="image" id="image" onblur="$(this).valid()"  class="custom-file-input" placeholder="" >
+                        <label class="custom-file-label" for="image">Chose File</label>
                     </div>
             </div>
             <div class="modal-footer">
@@ -68,12 +67,19 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal"  id="dismiss-modal">Leave</button>
             </div>
             </form>
-            <div id="err"></div>
+
         </div>
     </div>
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+
+    <script type="application/javascript">
+        $('input[type="file"]').change(function(e){
+            var fileName = e.target.files[0].name;
+            $('.custom-file-label').html(fileName);
+        });
+    </script>
 
     <script type="text/javascript" language="javascript" src="assets/js/gallery.js" ></script>
     <script type="text/javascript" language="javascript" src="../vendor/swall/sweetalert.js" ></script>

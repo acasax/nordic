@@ -1,6 +1,7 @@
 $(document).ready(function() {
     $('#add_button').click(function() {
         $('#gallery_form')[0].reset();
+        $('.modal-title').text("Insert");
         $('#action').val("Dodaj");
         $('#operation').val("Dodaj");
     });
@@ -18,18 +19,19 @@ $(document).ready(function() {
         "targets": [0, 3, 4],
         "orderable": false,
         }, ],
+        "lengthMenu": [ 5 ],
         "language": {
-        "lengthMenu": "Prikaži _MENU_ firmi po strani",
-            "zeroRecords": "Ništa nije pronađeno",
-            "info": "Prikazana strana _PAGE_ od _PAGES_",
+        "lengthMenu": "Show 5. image on page",
+            "zeroRecords": "zero records",
+            "info": "Show page _PAGE_ od _PAGES_",
             "infoEmpty": "No records available",
-            "infoFiltered": "(Pretraži _MAX_ od svih upisa)",
-            "loadingRecords": "Učitavanje...",
-            "processing": "Učitavanje",
-            "search": "Pretraga:",
+            "infoFiltered": "(Show _MAX_ of all image)",
+            "loadingRecords": "Loading...",
+            "processing": "Loading",
+            "search": "Search:",
             "paginate": {
-            "first": "Prvi",
-                "last": "Poslednji",
+            "first": "First",
+                "last": "Last",
                 "next": "->",
                 "previous": "<-"
         },
@@ -53,10 +55,10 @@ $(document).ready(function() {
             },
             messages: {
                 txt_title: {
-                    required: 'Unesite naslov',
+                    required: 'Insert title',
                 },
                 image: {
-                    required: "Izaberi fajl"
+                    required: "Chose file"
                 }
             },
             submitHandler: function submitHandler(form) {
@@ -75,31 +77,25 @@ $(document).ready(function() {
                     success: function(data) {
                         let objResp = JSON.parse(data);
                         let str = objResp.type;
-                        if (str === "invalid"){
-                            $("#err").html("Invalid File !").fadeIn();
-                        }
-                        if (str === "valid"){
-                            $("#preview").html(data).fadeIn();
-                            $("#gallery_form")[0].reset();
-                        }
 
                         if (str === 'ERROR') {
                             str = objResp.data;
                             swal({
-                                title: "Greška",
+                                title: "Error",
                                 text: str,
                                 timer: 3000,
                                 showCancelButton: false,
                                 showConfirmButton: false,
                                 type: "error"
                             });
+                            $('#gallery_form')[0].reset();
                             return;
                         }
 
                         if (str === 'OK') {
                             str = objResp.data;
                             swal({
-                                title: "Uspešno",
+                                title: "Success",
                                 text: str,
                                 timer: 1000,
                                 showCancelButton: false,
@@ -146,10 +142,12 @@ $(document).ready(function() {
             data: { gallery_id: gallery_id },
             dataType: "json",
             success: function(data) {
+                $('#gallery_form')[0].reset();
                 $('#exampleModalCenter').modal('show');
                 $('#txt_title').val(data.title);
-                $('.modal-title').text("Izmeni");
-                $('#gallery_id').val(gallery_id);
+                $('.custom-file-label').text(data.name);
+                $('.modal-title').text("Change");
+                $('#id').val(gallery_id);
                 $('#action').val("Promeni");
                 $('#operation').val("Promeni");
             }
@@ -161,8 +159,8 @@ $(document).ready(function() {
     $(document).on('click', '.delete', function() {
         let gallery_id = $(this).attr("id");
         swal({
-            title: "Da li ste sigurni da želite izbriste ovu firmu?",
-            type: "warning",
+            title: "Are you sure you want to delete this image?",
+            type: "Warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "Da",
@@ -179,7 +177,7 @@ $(document).ready(function() {
                     let str = objResp.type;
                     if (str === 'OK') {
                         swal({
-                            title: "Uspešno",
+                            title: "Success",
                             text: str,
                             timer: 1000,
                             showCancelButton: false,

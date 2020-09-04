@@ -5,9 +5,9 @@ include "functions.php";
 require_once '../class/class.user.php';
 $user_class = new USER();
 if (isset($_POST["operation"])) {
+    $valid_extensions = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf', 'doc', 'ppt');
     if ($_POST["operation"] === "Dodaj") {
 
-        $valid_extensions = array('jpeg', 'jpg', 'png', 'gif', 'bmp', 'pdf', 'doc', 'ppt');
         $title = $_POST['txt_title'];
         $img = $_FILES['image']['name'];
 
@@ -35,44 +35,42 @@ if (isset($_POST["operation"])) {
                                 ':name' => $img
                             )
                         );
-                        $user_class->returnJSON("OK", "Uspesno dodali firmu.");
+                        $user_class->returnJSON("OK", "Successfully insert image.");
                         return;
                     }
                 }
             }
         }
         else {
-            $user_class->returnJSON('ERROR', "Slika sa ovim nazivom vec postoji.");
+            $user_class->returnJSON('ERROR', "Image with this name already exist.");
             return;
         }
     }
-    else {
-        $user_class->returnJSON("inavalid", "Poruka.");
-        return;
-    }
-
 
 
     if ($_POST["operation"] === "Promeni") {
+
+        $id    = $_POST['id'];
         $title = $_POST['txt_title'];
+        $img   = $_FILES['image']['name'];
 
-        $sql1 = "SELECT * FROM gallery WHERE title = '$title'";
-        $get_title = $db->prepare($sql1);
-        $get_title->execute();
-
-        $stmt = $db->prepare("
-            UPDATE gallery 
-            SET title = :title
-            WHERE id = :id
-        ");
-
-        $stmt->execute(
-            array(
-                ':id' => $_POST["id"],
-                ':title' => $_POST["txt_title"],
-            )
-        );
-        $user_class->returnJSON("OK", "Uspešno ste izmenili podatke o firmi");
-        return;
+        if(is_array($_FILES)) {
+            if(is_uploaded_file($_FILES['image']['tmp_name'])) {
+                $sourcePath = $_FILES['image']['tmp_name'];
+                $targetPath = "image/".$_FILES['image']['name'];
+                if (move_uploaded_file($sourcePath, $targetPath)) {
+                    $update_image_sql = "UPDATE `gallery` SET `title` = '$title', `name` = '$img' WHERE `gallery`.`id` = $id;";
+                    $stmt = $db->prepare($update_image_sql);
+                    $result = $stmt->execute();
+                    $user_class->returnJSON("OK", "Successfully change image.");
+                    return;
+                }
+            }
+        }
+        else {
+            $user_class->returnJSON("inavalid", "Error.");
+            return;
+        }
     }
+
 }
