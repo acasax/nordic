@@ -1,29 +1,30 @@
 $(document).ready(function() {
     $('#add_button').click(function() {
-        $('#gallery_form')[0].reset();
+        $('#blog_form')[0].reset();
         $('.modal-title').text("Insert");
         $('#image').val("");
         $('#imagelabel').text("");
+        $('#txt_text').text("");
         $('#action').val("Dodaj");
         $('#operation').val("Dodaj");
     });
 
-    let dataTable = $('#gallery_data').DataTable({
+    let dataTable = $('#blog_data').DataTable({
         "processing":true,
         "serverSide": true,
         "autoWidth": false,
         "order": [],
         "ajax": {
-            url: "php_assets/gallery_function/gallery_function.php",
+            url: "php_assets/blog_function/blog_function.php",
             type: "POST"
         },
         "columnDefs": [{
-        "targets": [0, 3, 4],
-        "orderable": false,
+            "targets": [0, 3, 4],
+            "orderable": false,
         }, ],
         "lengthMenu": [ 5 ],
         "language": {
-        "lengthMenu": "Show max 5 image on page",
+            "lengthMenu": "Show max 5 blog on page",
             "zeroRecords": "zero records",
             "info": "Show page _PAGE_ od _PAGES_",
             "infoEmpty": "No records available",
@@ -32,22 +33,25 @@ $(document).ready(function() {
             "processing": "Loading",
             "search": "Search:",
             "paginate": {
-            "first": "First",
+                "first": "First",
                 "last": "Last",
                 "next": "->",
                 "previous": "<-"
+            },
         },
-    },
 
     });
 
-    const $galleryForm = $('#gallery_form')
+    const $blogForm = $('#blog_form')
     let validator = void(0)
 
-    if ($galleryForm.length) {
-        validator = $galleryForm.validate({
+    if ($blogForm.length) {
+        validator = $blogForm.validate({
             rules: {
                 txt_title: {
+                    required: true,
+                },
+                txt_text: {
                     required: true,
                 },
                 image: {
@@ -59,6 +63,9 @@ $(document).ready(function() {
                 txt_title: {
                     required: 'Insert title',
                 },
+                txt_text: {
+                    required: 'Insert text',
+                },
                 image: {
                     required: "Chose file"
                 }
@@ -66,7 +73,7 @@ $(document).ready(function() {
             submitHandler: function submitHandler(form) {
                 event.preventDefault();
                 $.ajax({
-                    url: "php_assets/gallery_function/gallery_func.php",
+                    url: "php_assets/blog_function/blog_func.php",
                     method: 'POST',
                     data: new FormData(form),
                     processData: false,
@@ -90,7 +97,7 @@ $(document).ready(function() {
                                 showConfirmButton: false,
                                 type: "error"
                             });
-                            $('#gallery_form')[0].reset();
+                            $('#blog_form')[0].reset();
                             return;
                         }
 
@@ -104,7 +111,7 @@ $(document).ready(function() {
                                 showConfirmButton: false,
                                 type: "success"
                             });
-                            $('#gallery_form')[0].reset();
+                            $('#blog_form')[0].reset();
                             $('#exampleModalCenter').modal('hide');
                             dataTable.ajax.reload();
                         }
@@ -116,38 +123,26 @@ $(document).ready(function() {
     }
 
 
-    NUMBER_CONTROL_INPUT = function(e) {
-        let value = e.value
-        if (!value) return;
-        const globalRegex = RegExp('^[0-9]+$', 'g');
-        if (!globalRegex.test(value)) {
-            e.value = ''
-            return
-        }
-        $(e).valid()
-    }
-
-
-
     $(document).on('click', '#dismiss-modal, button[data-dismiss="modal"]', function() {
         validator.resetForm();
     })
 
 
     $(document).on('click', '.update', function() {
-        let gallery_id = $(this).attr("id");
+        let blog_id = $(this).attr("id");
         $.ajax({
-            url: "php_assets/gallery_function/gallery_fetch_single.php",
+            url: "php_assets/blog_function/blog_fetch_single.php",
             method: "POST",
-            data: { gallery_id: gallery_id },
+            data: { blog_id: blog_id },
             dataType: "json",
             success: function(data) {
-                $('#gallery_form')[0].reset();
+                $('#blog_form')[0].reset();
                 $('#exampleModalCenter').modal('show');
                 $('#txt_title').val(data.title);
+                $('#txt_text').val(data.text);
                 $('.custom-file-label').text(data.name);
                 $('.modal-title').text("Change");
-                $('#id').val(gallery_id);
+                $('#id').val(blog_id);
                 $('#action').val("Promeni");
                 $('#operation').val("Promeni");
             }
@@ -157,9 +152,9 @@ $(document).ready(function() {
 
 
     $(document).on('click', '.delete', function() {
-        let gallery_id = $(this).attr("id");
+        let blog_id = $(this).attr("id");
         swal({
-            title: "Are you sure you want to delete this image?",
+            title: "Are you sure you want to delete this blog?",
             type: "error",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
@@ -169,9 +164,9 @@ $(document).ready(function() {
         }, function(isConfirm) {
             if (!isConfirm) return;
             $.ajax({
-                url: "php_assets/gallery_function/gallery_delete.php",
+                url: "php_assets/blog_function/blog_delete.php",
                 method: "POST",
-                data: { gallery_id: gallery_id },
+                data: { blog_id: blog_id },
                 success: function(data) {
                     let objResp = JSON.parse(data);
                     let str = objResp.type;

@@ -20,7 +20,7 @@
 <body>
 <div class="w-100 h-100 users-div" style="background: black">
     <div class="container-fluid">
-        <button type="button" id="add_button" class="btn btn-primary m-4" data-toggle="modal" data-target="#exampleModalCenter">
+        <button type="button" id="add_button1" class="btn btn-primary m-4" data-toggle="modal" data-target="#exampleModalCenter">
             Inser new photo
         </button>
         <br>
@@ -44,20 +44,21 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Nova firma</h5>
+                <h5 class="modal-title" id="exampleModalLongTitle">New image</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
                 <form method="post" id="gallery_form" enctype="multipart/form-data">
+                    <label class="control-label">Chose File</label>
+                    <div class="custom-file">
+                        <label class="custom-file-label" for="image" id="imagelabel"></label>
+                        <input type="file" accept="image/*" name="image" id="image" onblur="$(this).valid()"  class="custom-file-input" placeholder="" >
+                    </div>
                     <div class="form-group">
                         <label class="control-label">Insert title</label>
-                        <input type="text" name="txt_title" onblur="$(this).valid()" id="txt_title" class="form-control" placeholder="" required autofocus>
-                    </div>
-                    <div class="custom-file">
-                        <input type="file" accept="image/*" name="image" id="image" onblur="$(this).valid()"  class="custom-file-input" placeholder="" >
-                        <label class="custom-file-label" for="image">Chose File</label>
+                        <input type="text" name="txt_title" onblur="$(this).valid()" id="txt_title" class="form-control" placeholder="" required >
                     </div>
             </div>
             <div class="modal-footer">
