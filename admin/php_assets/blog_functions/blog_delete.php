@@ -10,7 +10,7 @@ if (isset($_POST["blog_id"])) {
     );
     $result = $stmt->execute(
         array(
-            ':id' => $_POST["gallery_id"]
+            ':id' => $_POST["blog_id"]
         )
     );
 

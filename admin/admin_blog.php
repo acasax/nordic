@@ -29,8 +29,8 @@
             <tr>
                 <th style="width: 5%"></th>
                 <th>Title</th>
-                <th>Picture</th>
                 <th>Text</th>
+                <th>Picture</th>
                 <th style="width: 5%"></th>
                 <th style="width: 5%"></th>
             </tr>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="form-group">
                         <label class="control-label">Insert text</label>
-                        <textarea type="text" name="txt_title" onblur="$(this).valid()" id="txt_text" class="form-control" placeholder="" required >
+                        <input type="text" name="txt_text" onblur="$(this).valid()" id="txt_text" class="form-control" placeholder="" required >
                     </div>
             </div>
             <div class="modal-footer">
@@ -79,7 +79,6 @@
 
 
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <script src="assets/js/blog.js" ></script>
 
     <script type="application/javascript">
         $('input[type="file"]').change(function(e){
@@ -88,7 +87,8 @@
         });
     </script>
 
-    <script type="text/javascript"  src="../vendor/swall/sweetalert.js" ></script>
+    <script type="text/javascript" language="javascript" src="assets/js/blog.js" ></script>
+    <script type="text/javascript" language="javascript" src="../vendor/swall/sweetalert.js" ></script>
 
     <script src="../vendor/form-validation/jquery.form.js"></script>
     <script src="../vendor/form-validation/jquery.validate.min.js"></script>

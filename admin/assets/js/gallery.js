@@ -147,6 +147,7 @@ $(document).ready(function() {
                 $('#txt_title').val(data.title);
                 $('.custom-file-label').text(data.name);
                 $('.modal-title').text("Change");
+                $('#image').val(data.name);
                 $('#id').val(gallery_id);
                 $('#action').val("Promeni");
                 $('#operation').val("Promeni");

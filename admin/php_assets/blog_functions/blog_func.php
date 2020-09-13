@@ -14,7 +14,7 @@ if (isset($_POST["operation"])) {
 
         //pretvori ga u funkciju
         $db->exec("set names utf8");
-        $get_img_name_sql1 = "SELECT * FROM blog WHERE name = '$img'";
+        $get_img_name_sql1 = "SELECT * FROM blog WHERE image_name = '$img'";
         $get_img_name1 = $db->prepare($get_img_name_sql1);
         $get_img_name1->execute();
         $row = $get_img_name1->fetch(PDO::FETCH_ASSOC);

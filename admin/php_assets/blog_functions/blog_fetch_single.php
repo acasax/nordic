@@ -6,8 +6,8 @@ include "functions.php";
 if (isset($_POST["blog_id"])) {
     $output = array();
     $stmt = $db->prepare("
-        SELECT * FROM gallery
-        WHERE id = '" . $_POST["gallery_id"] . "'"
+        SELECT * FROM blog
+        WHERE id = '" . $_POST["blog_id"] . "'"
     );
     $stmt->execute();
     $result = $stmt->fetch();

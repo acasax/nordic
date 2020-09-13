@@ -15,7 +15,7 @@ $(document).ready(function() {
         "autoWidth": false,
         "order": [],
         "ajax": {
-            url: "php_assets/blog_function/blog_function.php",
+            url: "php_assets/blog_functions/blog_function.php",
             type: "POST"
         },
         "columnDefs": [{
@@ -73,7 +73,7 @@ $(document).ready(function() {
             submitHandler: function submitHandler(form) {
                 event.preventDefault();
                 $.ajax({
-                    url: "php_assets/blog_function/blog_func.php",
+                    url: "php_assets/blog_functions/blog_func.php",
                     method: 'POST',
                     data: new FormData(form),
                     processData: false,
@@ -131,7 +131,7 @@ $(document).ready(function() {
     $(document).on('click', '.update', function() {
         let blog_id = $(this).attr("id");
         $.ajax({
-            url: "php_assets/blog_function/blog_fetch_single.php",
+            url: "php_assets/blog_functions/blog_fetch_single.php",
             method: "POST",
             data: { blog_id: blog_id },
             dataType: "json",
@@ -140,7 +140,8 @@ $(document).ready(function() {
                 $('#exampleModalCenter').modal('show');
                 $('#txt_title').val(data.title);
                 $('#txt_text').val(data.text);
-                $('.custom-file-label').text(data.name);
+                $('.custom-file-label').text(data.image_name);
+                $('#image').val(data.image_name);
                 $('.modal-title').text("Change");
                 $('#id').val(blog_id);
                 $('#action').val("Promeni");
@@ -164,7 +165,7 @@ $(document).ready(function() {
         }, function(isConfirm) {
             if (!isConfirm) return;
             $.ajax({
-                url: "php_assets/blog_function/blog_delete.php",
+                url: "php_assets/blog_functions/blog_delete.php",
                 method: "POST",
                 data: { blog_id: blog_id },
                 success: function(data) {
