@@ -54,7 +54,7 @@
                                     <ul id="navigation">
                                         <li><a class="active" href="index.html">home</a></li>
                                         <li><a class="active" href="gallery.php">gallery</a></li>
-                                        <li><a href="blog.html">blog</a></li>
+                                        <li><a href="blog.php">blog</a></li>
                                         <li><a href="contact.html">Contact</a></li>
                                     </ul>
                                 </nav>

@@ -1,6 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
-
+<?php include "admin/connection.php" ?>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -20,8 +20,7 @@
     <link rel="stylesheet" href="css/nice-select.css">
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/gijgo.css">
-    <link rel="stylesheet" href="css/animate.min.css">
-    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/animate.css">
     <link rel="stylesheet" href="css/slicknav.css">
     <link rel="stylesheet" href="css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
@@ -67,14 +66,13 @@
         </div>
     </header>
     <!-- header-end -->
-
     <!-- bradcam_area  -->
     <div class="bradcam_area breadcam_bg_3">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="bradcam_text">
-                        <h3>Contact Us</h3>
+                        <h3>blog</h3>
                     </div>
                 </div>
             </div>
@@ -82,72 +80,65 @@
     </div>
     <!-- /bradcam_area  -->
 
-    <!-- ================ contact section start ================= -->
-    <section class="contact-section section_padding">
-        <div class="container">
 
+    <!--================Blog Area =================-->
+    <section class="blog_area section-padding">
+        <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <h2 class="contact-title">Get in Touch</h2>
-                </div>
-                <div class="col-lg-8">
-                    <form class="form-contact contact_form" id="contactForm" action="mail.php" method="post" enctype="multipart/form-data" >
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <textarea class="form-control w-100" name="message" id="message" cols="30" rows="9" onblur="$(this).valid()" placeholder='Enter Message'></textarea>
-                                </div>
+                <div class="col-lg-12 mb-12 mb-lg-12">
+                    <div class="blog_left_sidebar">
+
+                        <?php
+                        $query = "SELECT * FROM `blog`";
+                        $stmt = $db->prepare($query);
+                        $stmt->execute();
+
+                        $result = $stmt->fetchAll();
+                        $data = array();
+                        foreach ($result as $row) {
+                            $img = "admin/php_assets/blog_functions/image/" . $row["image_name"];
+
+                            echo '<article class="blog_item">
+                            <div class="blog_item_img">
+                                <img class="card-img rounded-0" src="' . $img . '" alt="">
                             </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <input class="form-control" name="name" id="name" type="text" onblur="$(this).valid()" placeholder='Enter your name'>
-                                </div>
+
+                            <div class="blog_details">
+                                <a class="d-inline-block" href="single-blog.php?var=' . $row["id"] . '">
+                                    <h2>"' .$row["title"].'"</h2>
+                                </a>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <input class="form-control" name="email" id="email" type="email" onblur="$(this).valid()" placeholder='Enter email address'>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <input class="form-control" name="subject" id="subject" type="text" onblur="$(this).valid()" placeholder='Enter Subject'>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group mt-3">
-                            <button type="submit" name="action" id="action" class="button button-contactForm btn_4 boxed-btn" value="Send">Send Message</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="col-lg-4">
-                    <div class="media contact-info">
-                        <span class="contact-info__icon"><i class="ti-home"></i></span>
-                        <div class="media-body">
-                            <h3>Visit Our Location</h3>
-                            <p>PACEVILL ST JULIANS</p>
-                        </div>
-                    </div>
-                    <div class="media contact-info">
-                        <span class="contact-info__icon"><i class="ti-tablet"></i></span>
-                        <div class="media-body">
-                            <h3>Phone : </h3>
-                            <p>+356 99 32 3137</p>
-                        </div>
-                    </div>
-                    <div class="media contact-info">
-                        <span class="contact-info__icon"><i class="ti-email"></i></span>
-                        <div class="media-body">
-                            <h3>Let's have a chat</h3>
-                            <p>info@nordicbarmalta.com</p>
-                        </div>
+                        </article>';
+                        }
+
+                        ?>
+
+                        <!--<nav class="blog-pagination justify-content-center d-flex">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a href="#" class="page-link" aria-label="Previous">
+                                        <i class="ti-angle-left"></i>
+                                    </a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link">1</a>
+                                </li>
+                                <li class="page-item active">
+                                    <a href="#" class="page-link">2</a>
+                                </li>
+                                <li class="page-item">
+                                    <a href="#" class="page-link" aria-label="Next">
+                                        <i class="ti-angle-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>-->
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- ================ contact section end ================= -->
-
-
+    <!--================Blog Area =================-->
 
     <!-- footer start -->
     <footer class="footer ">
@@ -164,7 +155,7 @@
                     <div class="col-xl-7 col-lg-7 col-md-9 ">
                         <div class="menu_links ">
                             <ul>
-                                <li><a class="wow fadeInDown " data-wow-duration="1s " data-wow-delay=".2s " href="# ">Home</a></li>
+                                <li><a class="wow fadeInDown " data-wow-duration="1s " data-wow-delay=".2s " href="# ">Home</a class="wow fadeInUp " data-wow-duration="1s " data-wow-delay=".3s "></li>
                                 <li><a class="wow fadeInDown " data-wow-duration="1s " data-wow-delay="1s " href="# ">Blog</a></li>
                                 <li><a class="wow fadeInDown " data-wow-duration="1s " data-wow-delay="1s " href="# ">Gallery</a></li>
                                 <li><a class="wow fadeInDown " data-wow-duration="1s " data-wow-delay="1.1s " href="# ">Contact</a></li>
@@ -212,6 +203,7 @@
     </footer>
     <!--/ footer end  -->
 
+    <!-- link that opens popup -->
     <!-- JS here -->
     <script src="js/vendor/modernizr-3.5.0.min.js"></script>
     <script src="js/vendor/jquery-1.12.4.min.js"></script>
@@ -233,12 +225,7 @@
     <script src="js/gijgo.min.js"></script>
 
     <!--contact js-->
-    <script type="text/javascript" src="js/contact.js"></script>
-    <script type="text/javascript" language="javascript" src="vendor/swall/sweetalert.js" ></script>
-
-    <script src="vendor/form-validation/jquery.form.js"></script>
-    <script src="vendor/form-validation/jquery.validate.min.js"></script>
-
+    <script src="js/contact.js"></script>
     <script src="js/jquery.ajaxchimp.min.js"></script>
     <script src="js/jquery.form.js"></script>
     <script src="js/jquery.validate.min.js"></script>
