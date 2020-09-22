@@ -155,10 +155,10 @@
                     <div class="col-xl-7 col-lg-7 col-md-9 ">
                         <div class="menu_links ">
                             <ul>
-                                <li><a class="wow fadeInDown " data-wow-duration="1s " data-wow-delay=".2s " href="# ">Home</a class="wow fadeInUp " data-wow-duration="1s " data-wow-delay=".3s "></li>
-                                <li><a class="wow fadeInDown " data-wow-duration="1s " data-wow-delay="1s " href="# ">Blog</a></li>
-                                <li><a class="wow fadeInDown " data-wow-duration="1s " data-wow-delay="1s " href="# ">Gallery</a></li>
-                                <li><a class="wow fadeInDown " data-wow-duration="1s " data-wow-delay="1.1s " href="# ">Contact</a></li>
+                                <li><a class="wow fadeInDown " data-wow-duration="1s " data-wow-delay=".2s " href="index.html">Home</a></li>
+                                <li><a class="wow fadeInDown " data-wow-duration="1s " data-wow-delay="1s " href="blog.php ">Blog</a></li>
+                                <li><a class="wow fadeInDown " data-wow-duration="1s " data-wow-delay="1s " href="gallery.php">Gallery</a></li>
+                                <li><a class="wow fadeInDown " data-wow-duration="1s " data-wow-delay="1.1s " href="contact.html">Contact</a></li>
                             </ul>
                         </div>
                     </div>

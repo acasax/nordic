@@ -67,17 +67,7 @@
     <!-- header-end -->
 
     <!-- bradcam_area  -->
-    <div class="bradcam_area breadcam_bg_3">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-12">
-                    <div class="bradcam_text">
-                        <h3>Single blog</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
     <!-- /bradcam_area  -->
 
     <!--================Blog Area =================-->
@@ -92,7 +82,20 @@
 
     $img = "admin/php_assets/blog_functions/image/" . $result["image_name"];
 
-    echo '<section class="blog_area single-post-area section-padding">
+    echo '
+            <div class="bradcam_area breadcam_bg_3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="bradcam_text">
+                                <h3>'.$result['title'].'</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <section class="blog_area single-post-area section-padding">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 posts-list">
@@ -101,7 +104,6 @@
                                     <img class="img-fluid" src="' .$img.'" alt="">
                                 </div>
                                 <div class="blog_details">
-                                    <h2 style="text-align: center">'.$result['title'].'</h2>
                                     <p class="excert">
                                         '.$result['text'].'
                                     </p>
@@ -132,10 +134,10 @@
                     <div class="col-xl-7 col-lg-7 col-md-9 ">
                         <div class="menu_links ">
                             <ul>
-                                <li><a class="wow fadeInDown " data-wow-duration="1s " data-wow-delay=".2s " href="# ">Home</a class="wow fadeInUp " data-wow-duration="1s " data-wow-delay=".3s "></li>
-                                <li><a class="wow fadeInDown " data-wow-duration="1s " data-wow-delay="1s " href="# ">Blog</a></li>
-                                <li><a class="wow fadeInDown " data-wow-duration="1s " data-wow-delay="1s " href="# ">Gallery</a></li>
-                                <li><a class="wow fadeInDown " data-wow-duration="1s " data-wow-delay="1.1s " href="# ">Contact</a></li>
+                                <li><a class="wow fadeInDown " data-wow-duration="1s " data-wow-delay=".2s " href="index.html">Home</a></li>
+                                <li><a class="wow fadeInDown " data-wow-duration="1s " data-wow-delay="1s " href="blog.php ">Blog</a></li>
+                                <li><a class="wow fadeInDown " data-wow-duration="1s " data-wow-delay="1s " href="gallery.php">Gallery</a></li>
+                                <li><a class="wow fadeInDown " data-wow-duration="1s " data-wow-delay="1.1s " href="contact.html">Contact</a></li>
                             </ul>
                         </div>
                     </div>

@@ -18,6 +18,12 @@
 
 </head>
 <body>
+<div class="user m-3">
+    <a href="../blog.php" title="Go to blog"><i class="fas fa-power-off"></i></a>
+</div>
+<div class="back">
+    <a href="welcome.php" class="m-3" title="Back"><i class="fas fa-long-arrow-alt-left"></i></a>
+</div>
 <div class="w-100 h-100 users-div" style="background: black">
     <div class="container-fluid">
         <button type="button" id="add_button" class="btn btn-primary m-4" data-toggle="modal" data-target="#exampleModalCenter">

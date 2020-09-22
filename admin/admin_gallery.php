@@ -18,6 +18,12 @@
 
 </head>
 <body>
+<div class="user m-3">
+    <a href="../gallery.php" title="Go to gallery"><i class="fas fa-power-off"></i></a>
+</div>
+<div class="back">
+    <a href="welcome.php" class="m-3" title="Back"><i class="fas fa-long-arrow-alt-left"></i></a>
+</div>
 <div class="w-100 h-100 users-div" style="background: black">
     <div class="container-fluid">
         <button type="button" id="add_button1" class="btn btn-primary m-4" data-toggle="modal" data-target="#exampleModalCenter">
@@ -28,7 +34,7 @@
             <thead class="thead-dark">
             <tr>
                 <th style="width: 5%"></th>
-                <th>Title</th>
+                <th>Title</th>S
                 <th>Picture</th>
                 <th style="width: 5%"></th>
                 <th style="width: 5%"></th>

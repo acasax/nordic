@@ -8,6 +8,9 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     </head>
     <body>
+    <div class="user m-3">
+        <a href="../index.html" title="Logout"><i class="fas fa-power-off"></i></a>
+    </div>
       <div class="container h-100">
           <div class="row h-100 justify-content-between align-items-center">
               <div class="c-card col-3">
