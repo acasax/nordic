@@ -27,7 +27,7 @@
 <div class="w-100 h-100 users-div" style="background: black">
     <div class="container-fluid">
         <button type="button" id="add_button" class="btn btn-primary m-4" data-toggle="modal" data-target="#exampleModalCenter">
-            Inser new blog
+            Insert new blog
         </button>
         <br>
         <table id="blog_data" class="table table-striped table-bordered" style="width:100%">
@@ -58,7 +58,7 @@
             </div>
             <div class="modal-body">
                 <form method="post" id="blog_form" enctype="multipart/form-data">
-                    <label class="control-label">Chose File</label>
+                    <label class="control-label">Choose File</label>
                     <div class="custom-file">
                         <label class="custom-file-label" for="image" id="imagelabel"></label>
                         <input type="file" accept="image/*" name="image" id="image" onblur="$(this).valid()"  class="custom-file-input" placeholder="" >

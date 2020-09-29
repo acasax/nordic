@@ -26,7 +26,7 @@ $(document).ready(function() {
         "language": {
             "lengthMenu": "Show max 5 blog on page",
             "zeroRecords": "zero records",
-            "info": "Show page _PAGE_ od _PAGES_",
+            "info": "Show page _PAGE_ of _PAGES_",
             "infoEmpty": "No records available",
             "infoFiltered": "(Show _MAX_ of all image)",
             "loadingRecords": "Loading...",
